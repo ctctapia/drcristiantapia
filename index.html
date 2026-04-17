@@ -3,161 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Cristian Tapia | Tratamiento de Encías</title>
+<title>Dr. Cristian Tapia</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
-    color: #1e1e1e;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background:#f8fafc;
+    color:#1e293b;
 }
 
-header {
-    background: linear-gradient(135deg, #0f172a, #1e3a8a);
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
+/* HERO */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5');
+    background-size:cover;
+    background-position:center;
+    color:white;
+    text-align:center;
+    padding:100px 20px;
 }
 
-header h1 {
-    font-size: 32px;
-    max-width: 800px;
-    margin: auto;
+.hero img {
+    width:140px;
+    border-radius:50%;
+    margin-bottom:20px;
+    border:4px solid white;
 }
 
-header p {
-    margin-top: 20px;
-    font-size: 18px;
-    opacity: 0.9;
+.hero h1 {
+    font-size:36px;
+    max-width:700px;
+    margin:auto;
+}
+
+.hero p {
+    margin-top:15px;
+    font-size:18px;
 }
 
 .btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 28px;
-    background: #3b82f6;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 30px;
+    background:#0ea5e9;
+    color:white;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
 }
 
+.btn:hover {
+    background:#0284c7;
+}
+
+/* SECCIONES */
 section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
 }
 
 h2 {
-    margin-bottom: 20px;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+/* CARDS */
+.grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
 }
 
 .card {
-    background: white;
-    padding: 25px;
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    transition:0.3s;
 }
 
-.highlight {
-    background: #e0f2fe;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+.card:hover {
+    transform:translateY(-5px);
+}
+
+.icon {
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+/* CTA */
+.cta {
+    background:#0ea5e9;
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+    border-radius:20px;
 }
 
 footer {
-    text-align: center;
-    padding: 40px;
-    background: #0f172a;
-    color: white;
-}
-
-@media(max-width:600px){
-    header h1{
-        font-size: 24px;
-    }
+    text-align:center;
+    padding:30px;
+    font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>Si te sangran las encías o lo has pasado mal en el dentista… aquí la experiencia cambia.</h1>
-<p>Tratamientos de encías enfocados en pacientes reales, sin sobretratamientos y con un enfoque claro.</p>
-<a class="btn" href="#">Ver perfil y agendar</a>
-</header>
+<!-- HERO -->
+<div class="hero">
 
+<!-- REEMPLAZAR POR TU FOTO -->
+<img src="https://via.placeholder.com/150">
+
+<h1>Si te sangran las encías o has tenido malas experiencias en el dentista… aquí la experiencia cambia.</h1>
+
+<p>Tratamientos enfocados en encías, pacientes con sensibilidad y casos reales.</p>
+
+<a class="btn" href="#">Quiero agendar hora</a>
+
+</div>
+
+<!-- SOBRE -->
 <section>
 <h2>Sobre mí</h2>
-<div class="card">
-<p>Soy el Dr. Cristian Tapia. Después de años en clínica y desarrollando Dentistas Para Todos, decidí abrir un espacio enfocado en tratamientos de encías, pacientes con sensibilidad y personas que han tenido malas experiencias.</p>
-
-<p>Trabajo con un enfoque simple: que entiendas lo que tienes y lo tratemos de forma correcta.</p>
-
-<div class="highlight">
-<p><strong>Comodidad del paciente primero:</strong></p>
-<ul>
-<li>Uso de anestesia tópica antes de cualquier punción</li>
-<li>En pacientes ansiosos, anestesia sin vasoconstrictor</li>
-<li>Todo adaptado según cada caso</li>
-</ul>
-</div>
-
-</div>
+<p style="text-align:center; max-width:700px; margin:auto;">
+Soy el Dr. Cristian Tapia. Después de años en clínica y desarrollando Dentistas Para Todos, abrí un espacio enfocado en tratamientos de encías, pacientes que lo han pasado mal y personas que necesitan una atención clara, sin sobretratamientos.
+</p>
 </section>
 
+<!-- TRATAMIENTOS -->
 <section>
 <h2>Tratamientos</h2>
 
+<div class="grid">
+
 <div class="card">
+<div class="icon">🦷</div>
 <h3>Limpieza simple</h3>
 <p>Para inflamación sin pérdida de hueso.</p>
-<p><strong>Valor referencial: $35.000</strong></p>
+<p><strong>$35.000</strong></p>
 </div>
 
 <div class="card">
+<div class="icon">💧</div>
 <h3>Limpieza profunda</h3>
-<p>Cuando hay inflamación mayor o sarro bajo la encía.</p>
+<p>Para casos con sangrado o sarro bajo la encía.</p>
 <p><strong>Desde $70.000</strong></p>
 </div>
 
 <div class="card">
+<div class="icon">⚕️</div>
 <h3>Tratamiento periodontal</h3>
-<p>En lugar de cobrar por cada zona, el tratamiento se ajusta al tiempo real necesario.</p>
+<p>Enfoque por sesión según complejidad.</p>
+<p><strong>Desde $60.000</strong></p>
+</div>
 
-<p><strong>Desde $60.000 por sesión</strong></p>
+</div>
+</section>
 
-<div class="highlight">
-<p><strong>Ejemplo:</strong></p>
-<p>En otras clínicas puedes pagar por cada zona por separado.</p>
-<p>Aquí se agrupan zonas en una sesión cuando es posible, optimizando tiempo y costo.</p>
+<!-- DIFERENCIAL -->
+<section>
+<h2>Un enfoque distinto</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">💉</div>
+<p>Anestesia tópica antes de cualquier punción.</p>
+</div>
+
+<div class="card">
+<div class="icon">🧘</div>
+<p>Opciones sin vasoconstrictor para pacientes ansiosos.</p>
+</div>
+
+<div class="card">
+<div class="icon">📊</div>
+<p>Tratamientos ajustados al tiempo real necesario.</p>
 </div>
 
 </div>
 
 </section>
 
+<!-- CTA FINAL -->
 <section>
-<h2>Importante</h2>
-<div class="card">
-<p>Los valores son referenciales. Cada tratamiento depende del diagnóstico, complejidad y tiempo necesario.</p>
-<p><strong>Todo se confirma en la evaluación clínica.</strong></p>
-</div>
-</section>
+<div class="cta">
 
-<section>
-<h2>Agenda</h2>
-<div class="card">
-<p>Para ver disponibilidad y agendar, accede a mi perfil en Dentistas Para Todos.</p>
-<a class="btn" href="#">Ir a mi perfil</a>
+<h2>Agenda tu evaluación</h2>
+
+<p>Revisa disponibilidad y agenda directamente en mi perfil.</p>
+
+<a class="btn" href="#">Ir a Dentistas Para Todos</a>
+
 </div>
 </section>
 
 <footer>
-<p>Dr. Cristian Tapia | Tratamiento de Encías</p>
+<p>Dr. Cristian Tapia | Ñuñoa</p>
 </footer>
 
 </body>
