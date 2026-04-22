@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Cristian Tapia | Encías y orientación dental</title>
+  <meta name="description" content="Consulta privada en Ñuñoa enfocada en encías, limpiezas, orientación dental y pacientes con miedo o malas experiencias previas." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f4f8fb;
+      --bg:#f2f5f7;
       --surface:#ffffff;
-      --surface-2:#eef6fb;
-      --text:#10212f;
-      --muted:#5c6f7f;
-      --primary:#0a88c9;
-      --primary-dark:#06689a;
-      --accent:#dff4ff;
-      --shadow:0 16px 40px rgba(16,33,47,.10);
+      --surface-2:#edf2f4;
+      --text:#17303d;
+      --muted:#60717b;
+      --primary:#2d7a86;
+      --primary-dark:#1f5963;
+      --accent:#d9e8e7;
+      --shadow:0 16px 40px rgba(23,48,61,.10);
       --radius:22px;
       --radius-sm:16px;
       --max:1180px;
@@ -27,10 +28,10 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:'Inter',sans-serif;
+      font-family:'Inter',Arial,sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(10,136,201,.08), transparent 30%),
-        radial-gradient(circle at top right, rgba(6,104,154,.06), transparent 25%),
+        radial-gradient(circle at top left, rgba(45,122,134,.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(31,89,99,.05), transparent 25%),
         var(--bg);
       color:var(--text);
       line-height:1.65;
@@ -78,7 +79,7 @@
       margin:0 0 18px;
       font-size:clamp(34px, 5vw, 62px);
       line-height:1.05;
-      letter-spacing:-0.03em;
+      letter-spacing:0;
     }
 
     .hero p{
@@ -93,6 +94,13 @@
       flex-wrap:wrap;
       gap:14px;
       margin-top:28px;
+    }
+
+    .hero-note{
+      margin-top:18px;
+      color:rgba(255,255,255,.84);
+      font-size:14px;
+      max-width:560px;
     }
 
     .btn{
@@ -113,8 +121,13 @@
       color:var(--primary-dark);
     }
 
-    .btn-primary:hover{
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .floating:hover{
       transform:translateY(-2px);
+    }
+
+    .btn-primary:hover{
       box-shadow:0 16px 30px rgba(0,0,0,.18);
     }
 
@@ -137,8 +150,8 @@
     .doctor-photo{
       border-radius:24px;
       overflow:hidden;
-      aspect-ratio: 4/5;
-      background:#d8e6ef;
+      aspect-ratio:4/5;
+      background:#dbe6ea;
       margin-bottom:18px;
     }
 
@@ -151,6 +164,7 @@
     .doctor-mini{
       display:grid;
       gap:12px;
+      padding-top:4px;
     }
 
     .doctor-tag{
@@ -161,6 +175,34 @@
       font-size:13px;
       font-weight:700;
       width:max-content;
+    }
+
+    .trust-band{
+      position:relative;
+      margin-top:-34px;
+      padding-top:0;
+      z-index:2;
+    }
+
+    .trust-strip{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .trust-item{
+      background:var(--surface);
+      border-radius:20px;
+      padding:20px 22px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(31,89,99,.08);
+    }
+
+    .trust-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:17px;
+      color:var(--primary-dark);
     }
 
     section{
@@ -177,7 +219,7 @@
       margin:0 0 14px;
       font-size:clamp(28px,4vw,44px);
       line-height:1.08;
-      letter-spacing:-0.03em;
+      letter-spacing:0;
     }
 
     .section-head p{
@@ -201,7 +243,7 @@
     }
 
     .panel.soft{
-      background:linear-gradient(180deg,#f9fdff,#edf8fd);
+      background:linear-gradient(180deg,#fafcfc,#eef4f4);
     }
 
     .panel p:last-child{margin-bottom:0}
@@ -218,7 +260,7 @@
       padding:16px 18px;
       border-radius:18px;
       background:#fff;
-      box-shadow:0 10px 28px rgba(16,33,47,.08);
+      box-shadow:0 10px 28px rgba(23,48,61,.08);
     }
 
     .badge-icon{
@@ -260,16 +302,16 @@
       font-size:15px;
     }
 
-    /* ====== SERVICIOS (CAMBIOS) ====== */
     .services-grid{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:16px; /* antes 22px */
+      gap:22px;
     }
 
     .service-card{
-      display:flex;               /* antes grid */
-      flex-direction:column;      /* imagen arriba */
+      display:grid;
+      grid-template-columns:1fr;
+      gap:0;
       background:var(--surface);
       border-radius:26px;
       overflow:hidden;
@@ -278,23 +320,19 @@
     }
 
     .service-media{
-      width:100%;
-      height:240px;               /* forma horizontal */
-      overflow:hidden;
-      background:#dcecf5;
+      aspect-ratio:16/9;
+      background:#dde7ea;
     }
 
     .service-media img{
       width:100%;
       height:100%;
       object-fit:cover;
-      object-position:center;
     }
 
     .service-body{
       padding:24px;
     }
-    /* ====== FIN CAMBIOS SERVICIOS ====== */
 
     .service-kicker{
       display:inline-flex;
@@ -324,8 +362,8 @@
       margin-top:14px;
       padding:14px 16px;
       border-radius:16px;
-      background:#f7fbfe;
-      border:1px solid #d8edf8;
+      background:#f6faf9;
+      border:1px solid #d7e5e3;
       color:var(--text);
       font-weight:700;
     }
@@ -387,8 +425,8 @@
     }
 
     .compare-card.alt{
-      background:linear-gradient(180deg,#ecf8ff,#dff3ff);
-      border:1px solid #bfe8fb;
+      background:linear-gradient(180deg,#eef6f5,#e1efed);
+      border:1px solid #c8dfdc;
     }
 
     .compare-card h3{
@@ -401,8 +439,8 @@
       margin-top:18px;
       padding:18px;
       border-radius:18px;
-      background:#f8fbfd;
-      border:1px dashed #bfd8e6;
+      background:#f8fbfa;
+      border:1px dashed #c2d7d5;
       font-weight:700;
       line-height:1.5;
     }
@@ -445,7 +483,7 @@
       aspect-ratio:16/9;
       overflow:hidden;
       border-radius:20px;
-      background:#d9e8f0;
+      background:#dbe5e8;
     }
 
     .video-frame iframe{
@@ -456,12 +494,12 @@
 
     .cta{
       background:
-        linear-gradient(120deg, rgba(6,104,154,.93), rgba(10,136,201,.92)),
+        linear-gradient(120deg, rgba(24,68,76,.93), rgba(45,122,134,.90)),
         url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color:#fff;
       border-radius:30px;
       padding:42px 28px;
-      box-shadow:0 22px 50px rgba(6,104,154,.24);
+      box-shadow:0 22px 50px rgba(31,89,99,.24);
       text-align:center;
     }
 
@@ -498,12 +536,11 @@
       align-items:center;
       justify-content:center;
       font-weight:800;
-      box-shadow:0 18px 34px rgba(10,136,201,.30);
+      box-shadow:0 18px 34px rgba(45,122,134,.28);
       transition:.25s ease;
     }
 
     .floating:hover{
-      transform:translateY(-2px);
       background:var(--primary-dark);
     }
 
@@ -516,6 +553,7 @@
 
     @media (max-width: 1024px){
       .hero-grid,
+      .trust-strip,
       .narrative,
       .services-grid,
       .conditions,
@@ -524,12 +562,12 @@
         grid-template-columns:1fr;
       }
 
-      .service-media{
-        height:220px;
+      .service-card{
+        grid-template-columns:1fr;
       }
 
-      .services-grid{
-        gap:12px;
+      .service-media{
+        aspect-ratio:4/3;
       }
     }
 
@@ -538,9 +576,52 @@
         padding:66px 0 52px;
       }
 
+      .hero-grid{
+        gap:22px;
+      }
+
+      .hero-card{
+        padding:14px;
+        border-radius:24px;
+      }
+
+      .doctor-photo{
+        aspect-ratio:3/4;
+        margin-bottom:14px;
+      }
+
+      .doctor-mini{
+        gap:10px;
+      }
+
+      .trust-band{
+        margin-top:0;
+        padding-top:10px;
+      }
+
+      section{
+        padding:38px 0;
+      }
+
+      .section-head{
+        margin:0 auto 18px;
+      }
+
+      .section-head p{
+        font-size:16px;
+      }
+
+      section .container > :first-child{
+        margin-top:0;
+      }
+
       .hero-actions{
         flex-direction:column;
         align-items:stretch;
+      }
+
+      .hero-note{
+        text-align:left;
       }
 
       .btn{
@@ -562,12 +643,10 @@
         width:min(100% - 20px, var(--max));
       }
 
-      .services-grid{
-        gap:10px;
-      }
-
-      .service-body{
-        padding:20px;
+      .floating{
+        left:10px;
+        right:10px;
+        bottom:10px;
       }
     }
   </style>
@@ -578,17 +657,19 @@
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">Consulta privada en Ñuñoa · enfoque en encías y orientación</div>
-        <h1>Si te sangran las encías, lo has postergado o lo has pasado mal en el dentista, aquí la experiencia cambia.</h1>
-        <p>Tratamientos enfocados en encías, pacientes con sensibilidad, malas experiencias y personas que necesitan una orientación clara para poder empezar.</p>
+        <h1>Si te sangran las encías, llevas tiempo postergándolo o el dentista te genera ansiedad, aquí puedes empezar con más calma y claridad.</h1>
+        <p>Este espacio está pensado para personas que necesitan entender qué tienen, cuánto sentido tiene tratarlo ahora y cuál es la forma más llevadera de partir, sin confusión ni presión innecesaria.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#">Quiero agendar hora</a>
-          <a class="btn btn-secondary" href="#como-cobro">Ver cómo estoy cobrando</a>
+          <a class="btn btn-primary" href="#contacto">Quiero una evaluación clara</a>
+          <a class="btn btn-secondary" href="#como-cobro">Ver valores y cómo funciona</a>
         </div>
+        <div class="hero-note">Ideal si has postergado por miedo, malas experiencias o porque no sabes por dónde empezar.</div>
       </div>
 
       <div class="hero-card">
         <div class="doctor-photo">
-          <img src="https://via.placeholder.com/900x1200" alt="Dr. Cristian Tapia">
+          <!-- Reemplazar por una foto real del doctor cuando esté disponible. -->
+          <img src="https://via.placeholder.com/900x1200?text=Dr.+Cristian+Tapia" alt="Dr. Cristian Tapia">
         </div>
         <div class="doctor-mini">
           <span class="doctor-tag">Dr. Cristian Tapia</span>
@@ -598,7 +679,292 @@
     </div>
   </header>
 
-  <!-- RESTO DEL HTML IGUAL (SIN CAMBIOS) -->
+  <main>
+    <section class="trust-band">
+      <div class="container">
+        <div class="trust-strip">
+          <div class="trust-item">
+            <strong>Más claridad desde el inicio</strong>
+            Entender qué está pasando reduce ansiedad y ayuda a decidir mejor.
+          </div>
+          <div class="trust-item">
+            <strong>Tratamiento más llevadero</strong>
+            La forma de atención se adapta a sensibilidad, miedo y ritmo real del paciente.
+          </div>
+          <div class="trust-item">
+            <strong>Primer paso simple</strong>
+            Si algo no corresponde a este enfoque, se orienta o deriva correctamente.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Esta consulta está pensada para ordenar, explicar y ayudarte a partir bien</h2>
+          <p>No se trata de hacer de todo. Se trata de que salgas entendiendo qué pasa, qué conviene hacer primero y cómo avanzar sin sentirte perdido.</p>
+        </div>
+
+        <div class="narrative">
+          <div class="panel">
+            <p>Después de todo el apoyo que ha tenido Dentistas Para Todos, decidí abrir este espacio de atención como una forma de agradecer a quienes han seguido, apoyado y creído en el proyecto.</p>
+            <p>La idea de esta consulta privada no es transformarme en una clínica que hace de todo. Al contrario. Estoy enfocado en algo mucho más específico: ayudarte a entender qué está pasando, ordenar tu tratamiento y partir de forma correcta, especialmente si tienes problemas de encías, sensibilidad, miedo al dentista o si vienes de malas experiencias previas.</p>
+            <p>Muchos pacientes no saben por dónde empezar. Algunos tienen presupuestos que no entienden. Otros llevan años postergando su tratamiento por miedo, por malas experiencias o porque sienten que nadie les ha explicado bien lo que realmente necesitan.</p>
+            <p>Por eso decidí enfocarme en esta etapa en tratamientos de encías, limpiezas, evaluación y orientación, con una forma de trabajo más clara, más humana y más transparente.</p>
+          </div>
+
+          <div class="panel soft">
+            <div class="badge-list">
+              <div class="badge-item">
+                <div class="badge-icon">01</div>
+                <div>
+                  <strong>Encías y casos reales</strong><br>
+                  Enfoque en gingivitis, periodontitis, sensibilidad y problemas alrededor de implantes.
+                </div>
+              </div>
+              <div class="badge-item">
+                <div class="badge-icon">02</div>
+                <div>
+                  <strong>Pacientes que han postergado</strong><br>
+                  Si no sabes por dónde partir, esta consulta también busca ordenar tu tratamiento.
+                </div>
+              </div>
+              <div class="badge-item">
+                <div class="badge-icon">03</div>
+                <div>
+                  <strong>Sin abarcar todo</strong><br>
+                  Lo que no corresponde a este enfoque se deriva correctamente con colegas o mediante Dentistas Para Todos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-grid">
+          <div class="focus-item">
+            <h3>En qué me estoy enfocando actualmente</h3>
+            <p>Tratamientos de encías, limpiezas simples, limpiezas más profundas, pacientes con sensibilidad, malas experiencias y casos que requieren una orientación clara para empezar.</p>
+          </div>
+          <div class="focus-item">
+            <h3>Lo que no estoy haciendo en esta etapa</h3>
+            <p>No estoy realizando todos los tratamientos odontológicos. Si necesitas otra área, la idea es ayudarte a tomar una buena decisión y derivarte bien.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Servicios</h2>
+          <p>Estos son los tipos de atención más útiles para quienes quieren resolver encías, empezar con una limpieza o recibir una orientación clara antes de decidir.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80" alt="Limpieza simple">
+            </div>
+            <div class="service-body">
+              <div class="service-kicker">Limpieza simple</div>
+              <h3>Tratamiento para gingivitis sin pérdida de hueso importante</h3>
+              <p>Cuando hay inflamación de encías, pero todavía no hay una pérdida de hueso importante, muchas veces se puede hacer una limpieza en una sola sesión.</p>
+              <p>Este tipo de atención puede requerir anestesia en algunas zonas si existe sensibilidad o inflamación.</p>
+              <div class="price">
+                Valor actual: $35.000
+                <small>Valor normal: $45.000</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80" alt="Limpieza profunda">
+            </div>
+            <div class="service-body">
+              <div class="service-kicker">Limpieza más profunda</div>
+              <h3>Para casos con más inflamación, sangrado o sarro bajo la encía</h3>
+              <p>Cuando hay más inflamación, sangrado, encías crecidas o sarro por debajo de la encía que el paciente no ve, el tratamiento puede requerir dos sesiones.</p>
+              <p>La idea es trabajar con calma, buena visión y el tiempo suficiente para hacerlo bien.</p>
+              <div class="price">
+                Total referencial: $70.000
+                <small>2 sesiones de $35.000</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80" alt="Tratamiento periodontal">
+            </div>
+            <div class="service-body">
+              <div class="service-kicker">Tratamiento periodontal</div>
+              <h3>Casos más complejos donde ya puede existir periodontitis</h3>
+              <p>Cuando ya existe una enfermedad más avanzada, el tratamiento deja de ser una limpieza simple. En muchos casos se necesitan pulidos radiculares y un trabajo más profundo.</p>
+              <p>Aquí es donde mi forma de cobrar cambia respecto a muchos otros lugares.</p>
+              <div class="price">
+                Desde $60.000 por sesión
+                <small>Valor referencial. Se confirma según evaluación y tiempo real de trabajo.</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=80" alt="Evaluación y orientación">
+            </div>
+            <div class="service-body">
+              <div class="service-kicker">Evaluación y orientación</div>
+              <h3>Para pacientes con miedo, malas experiencias o que no saben por dónde partir</h3>
+              <p>Si tienes fobia al dentista, no entiendes tus presupuestos o no sabes qué decisiones tomar, puedes agendar una evaluación de orientación.</p>
+              <p>Revisamos tu caso, tus radiografías y el orden correcto del tratamiento. Si corresponde, también se puede iniciar algo básico como una limpieza.</p>
+              <div class="price">
+                Valor referencial: $10.000
+                <small>No incluye radiografías como regla general. Puede incluir una o dos periapicales simples si es necesario.</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Comodidad del paciente primero</h2>
+          <p>Cuando una persona llega con miedo o sensibilidad, la experiencia importa tanto como el tratamiento. Por eso la atención busca ser más tranquila, explicada y tolerable.</p>
+        </div>
+
+        <div class="comfort">
+          <div class="comfort-card">
+            <div class="comfort-icon">A</div>
+            <h3>Anestesia tópica antes de la punción</h3>
+            <p>Si necesitamos colocar anestesia, primero utilizo anestesia tópica en crema para que moleste menos la aplicación.</p>
+          </div>
+          <div class="comfort-card">
+            <div class="comfort-icon">B</div>
+            <h3>Opción sin vasoconstrictor en pacientes ansiosos</h3>
+            <p>En pacientes muy asustados o ansiosos, muchas veces evalúo usar anestesia sin vasoconstrictor para evitar sensación de aceleración o taquicardia.</p>
+          </div>
+          <div class="comfort-card">
+            <div class="comfort-icon">C</div>
+            <h3>Todo se adapta al caso real</h3>
+            <p>Esto se decide caso a caso, según la evaluación, la sensibilidad del paciente y lo que permita trabajar de forma tranquila y correcta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-cobro">
+      <div class="container">
+        <div class="section-head">
+          <h2>Cómo estoy cobrando y por qué</h2>
+          <p>La idea es que el paciente entienda mejor qué se está haciendo, cuánto tiempo toma y por qué este sistema puede ser más claro y conveniente.</p>
+        </div>
+
+        <div class="didactic">
+          <div class="explain-box">
+            En muchos centros y grandes clínicas, los tratamientos periodontales se cobran por grupos o sextantes de la boca. Yo estoy probando un enfoque distinto en esta consulta privada: no cobrar de forma rígida por sextante, sino según el tiempo real que se puede trabajar en cada sesión, la complejidad del caso y lo que efectivamente se logra avanzar de forma correcta y cómoda para el paciente.
+          </div>
+
+          <div class="compare">
+            <div class="compare-card">
+              <h3>Ejemplo didáctico 1 · Pulidos radiculares en muchos lugares</h3>
+              <p>Si te cobran <strong>$65.000 por sextante</strong> y necesitas tratamiento en <strong>4 grupos</strong>, el valor podría ser:</p>
+              <div class="calc">4 grupos x $65.000 = $260.000</div>
+              <p>Eso responde a una lógica rígida por grupo tratado.</p>
+            </div>
+
+            <div class="compare-card alt">
+              <h3>Cómo lo trabajaría yo en mi consulta privada</h3>
+              <p>Si ese mismo caso se puede resolver bien en <strong>2 sesiones</strong>, podría cobrar:</p>
+              <div class="calc">
+                Sesión 1: $60.000<br>
+                Sesión 2: $60.000<br><br>
+                Total referencial: $120.000
+              </div>
+              <p>Eso no significa que todos los casos costarán eso. Significa que, si se puede agrupar bien el trabajo, el valor puede ser bastante más conveniente.</p>
+            </div>
+          </div>
+
+          <div class="compare">
+            <div class="compare-card">
+              <h3>Ejemplo didáctico 2 · Destartraje subgingival en otros lugares</h3>
+              <p>En otros centros, un tratamiento de destartraje subgingival en dos sesiones puede superar los <strong>$175.000</strong>.</p>
+            </div>
+
+            <div class="compare-card alt">
+              <h3>Cómo lo estoy trabajando yo en esta etapa</h3>
+              <div class="calc">
+                Sesión 1: $35.000<br>
+                Sesión 2: $35.000<br><br>
+                Total referencial: $70.000
+              </div>
+              <p>La idea de mostrar esto es orientar y explicar mejor el sistema, no prometer que todos los casos costarán lo mismo.</p>
+            </div>
+          </div>
+
+          <div class="explain-box">
+            Hay pacientes en los que se puede avanzar más rápido y agrupar mejor el tratamiento. Y hay otros donde la inflamación, el sangrado, la sensibilidad, la ansiedad o la complejidad obligan a trabajar más lento o en más citas. Por eso, todos los valores publicados aquí son referenciales y se confirman siempre en la evaluación clínica.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Importante antes de agendar</h2>
+          <p>Esto ayuda a decidir con tranquilidad, sabiendo exactamente a qué corresponde esta modalidad y cómo acceder a estos valores.</p>
+        </div>
+
+        <div class="conditions">
+          <div class="condition-card">
+            <p>Estos valores actuales forman parte de esta etapa inicial como una forma de agradecimiento a quienes han apoyado el proyecto.</p>
+            <p>Para acceder a estos valores, la idea es que <strong>me sigas en mis redes</strong> y que estés <strong>registrado gratis en Dentistas Para Todos</strong>.</p>
+            <p>No es nada complejo ni restrictivo. El registro en Dentistas Para Todos es gratuito, y además te sirve para ver mejor el perfil, la disponibilidad y otros detalles.</p>
+          </div>
+
+          <div class="condition-card">
+            <p><strong>Muy importante:</strong> estos valores y esta modalidad de atención aplican solamente a mi consulta privada, ingresando desde el enlace de esta página.</p>
+            <p>No corresponden a otras clínicas, centros o perfiles que puedan aparecer dentro de Dentistas Para Todos.</p>
+            <p>El diagnóstico, la cantidad de sesiones, el tiempo real de trabajo y el valor final siempre se confirman en la evaluación clínica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Conoce mejor el enfoque</h2>
+          <p>Aquí puedes ver una presentación breve sobre la forma de trabajo y el tipo de atención.</p>
+        </div>
+
+        <div class="video-wrap">
+          <div class="video-frame">
+            <!-- Reemplazar YOUTUBE_ID por el ID real del video. -->
+            <iframe src="https://www.youtube.com/embed/YOUTUBE_ID" title="Video Dr. Cristian Tapia" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="cta">
+          <h2>Si quieres dar el primer paso con más claridad, agenda desde aquí</h2>
+          <p>Podrás revisar el perfil, indicar lo que necesitas y comenzar con una evaluación pensada para ordenar tu caso y ayudarte a decidir bien.</p>
+          <!-- Reemplazar este enlace por el link real de agenda o perfil. -->
+          <a class="btn btn-primary" href="https://dentistasparatodos.cl/" target="_blank" rel="noopener">Ir a perfil y agendar</a>
+          <div class="subnote">Los valores publicados aquí aplican solo a esta consulta privada ingresando desde este enlace.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="floating" href="#contacto">Agendar evaluación</a>
 
   <footer>
     <div class="container">
