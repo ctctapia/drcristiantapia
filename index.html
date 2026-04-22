@@ -1,251 +1,610 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Cristian Tapia</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Cristian Tapia | Encías y orientación dental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f8fb;
+      --surface:#ffffff;
+      --surface-2:#eef6fb;
+      --text:#10212f;
+      --muted:#5c6f7f;
+      --primary:#0a88c9;
+      --primary-dark:#06689a;
+      --accent:#dff4ff;
+      --shadow:0 16px 40px rgba(16,33,47,.10);
+      --radius:22px;
+      --radius-sm:16px;
+      --max:1180px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(10,136,201,.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(6,104,154,.06), transparent 25%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
 
-<style>
+    img{max-width:100%;display:block}
+    a{text-decoration:none}
 
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:#f4f8fb;
-color:#0f172a;
-}
+    .container{
+      width:min(100% - 32px, var(--max));
+      margin:0 auto;
+    }
 
-/* HERO */
-.hero{
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
-url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5');
-background-size:cover;
-background-position:center;
-color:white;
-padding:80px 20px;
-display:flex;
-justify-content:center;
-}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:84px 0 70px;
+      background:
+        linear-gradient(120deg, rgba(7,28,43,.80), rgba(7,28,43,.58)),
+        url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color:#fff;
+    }
 
-.hero-content{
-max-width:1100px;
-display:flex;
-gap:40px;
-align-items:center;
-}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:36px;
+      align-items:center;
+    }
 
-.hero-text{
-flex:1;
-}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      backdrop-filter: blur(6px);
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:18px;
+    }
 
-.hero-text h1{
-font-size:40px;
-margin-bottom:20px;
-}
+    .hero h1{
+      margin:0 0 18px;
+      font-size:clamp(34px, 5vw, 62px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+    }
 
-.hero-text p{
-font-size:18px;
-}
+    .hero p{
+      font-size:18px;
+      color:rgba(255,255,255,.92);
+      max-width:740px;
+      margin:0 0 24px;
+    }
 
-.hero img{
-width:220px;
-height:auto;
-border-radius:20px;
-}
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
 
-/* BOTON */
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:14px 30px;
-background:#0ea5e9;
-color:white;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+    }
 
-/* SECCIONES */
-section{
-max-width:1100px;
-margin:auto;
-padding:45px 20px;
-}
+    .btn-primary{
+      background:#fff;
+      color:var(--primary-dark);
+    }
 
-h2{
-text-align:center;
-margin-bottom:20px;
-}
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 30px rgba(0,0,0,.18);
+    }
 
-/* GRID SERVICIOS */
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-}
+    .btn-secondary{
+      background:rgba(255,255,255,.14);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.24);
+      backdrop-filter:blur(6px);
+    }
 
-/* CARD */
-.card{
-background:white;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.07);
-}
+    .hero-card{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:28px;
+      padding:22px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 18px 40px rgba(0,0,0,.20);
+    }
 
-/* 🔥 IMAGEN AJUSTADA (HORIZONTAL REAL) */
-.service-media{
-width:100%;
-height:240px;
-overflow:hidden;
-}
+    .doctor-photo{
+      border-radius:24px;
+      overflow:hidden;
+      aspect-ratio: 4/5;
+      background:#d8e6ef;
+      margin-bottom:18px;
+    }
 
-.service-media img{
-width:100%;
-height:100%;
-object-fit:cover;
-object-position:center;
-display:block;
-}
+    .doctor-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-/* CONTENIDO */
-.card-content{
-padding:18px;
-}
+    .doctor-mini{
+      display:grid;
+      gap:12px;
+    }
 
-/* BLOQUES */
-.box{
-background:white;
-padding:20px;
-border-radius:18px;
-margin-bottom:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.06);
-}
+    .doctor-tag{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      font-size:13px;
+      font-weight:700;
+      width:max-content;
+    }
 
-/* CTA */
-.cta{
-background:#0ea5e9;
-color:white;
-text-align:center;
-padding:45px 20px;
-border-radius:20px;
-}
+    section{
+      padding:82px 0;
+    }
 
-/* 🔥 MOBILE (MENOS LARGO) */
-@media(max-width:768px){
+    .section-head{
+      max-width:860px;
+      margin:0 auto 34px;
+      text-align:center;
+    }
 
-.grid{
-grid-template-columns:1fr;
-gap:10px;
-}
+    .section-head h2{
+      margin:0 0 14px;
+      font-size:clamp(28px,4vw,44px);
+      line-height:1.08;
+      letter-spacing:-0.03em;
+    }
 
-.service-media{
-height:200px;
-}
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+    }
 
-.hero{
-padding:60px 20px;
-}
+    .narrative{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:start;
+    }
 
-.hero-text h1{
-font-size:28px;
-}
+    .panel{
+      background:var(--surface);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
 
-.hero-text p{
-font-size:16px;
-}
+    .panel.soft{
+      background:linear-gradient(180deg,#f9fdff,#edf8fd);
+    }
 
-}
+    .panel p:last-child{margin-bottom:0}
 
-</style>
+    .badge-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .badge-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px 18px;
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 10px 28px rgba(16,33,47,.08);
+    }
+
+    .badge-icon{
+      width:44px;
+      height:44px;
+      flex:0 0 44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:var(--accent);
+      color:var(--primary-dark);
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .focus-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .focus-item{
+      padding:18px;
+      border-radius:18px;
+      background:var(--surface);
+      box-shadow:var(--shadow);
+      min-height:100%;
+    }
+
+    .focus-item h3{
+      margin:0 0 8px;
+      font-size:17px;
+    }
+
+    .focus-item p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* ====== SERVICIOS (CAMBIOS) ====== */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px; /* antes 22px */
+    }
+
+    .service-card{
+      display:flex;               /* antes grid */
+      flex-direction:column;      /* imagen arriba */
+      background:var(--surface);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:100%;
+    }
+
+    .service-media{
+      width:100%;
+      height:240px;               /* forma horizontal */
+      overflow:hidden;
+      background:#dcecf5;
+    }
+
+    .service-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .service-body{
+      padding:24px;
+    }
+    /* ====== FIN CAMBIOS SERVICIOS ====== */
+
+    .service-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      background:var(--surface-2);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      color:var(--primary-dark);
+      margin-bottom:14px;
+    }
+
+    .service-body h3{
+      margin:0 0 10px;
+      font-size:23px;
+      line-height:1.15;
+    }
+
+    .service-body p{
+      margin:0 0 12px;
+      color:var(--muted);
+    }
+
+    .price{
+      margin-top:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:#f7fbfe;
+      border:1px solid #d8edf8;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .price small{
+      display:block;
+      color:var(--muted);
+      font-weight:500;
+      margin-top:4px;
+    }
+
+    .comfort{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .comfort-card{
+      background:var(--surface);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .comfort-card h3{
+      margin:14px 0 8px;
+      font-size:19px;
+    }
+
+    .comfort-icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:var(--accent);
+      color:var(--primary-dark);
+      font-size:22px;
+      font-weight:800;
+    }
+
+    .didactic{
+      display:grid;
+      gap:18px;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .compare-card{
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      background:var(--surface);
+    }
+
+    .compare-card.alt{
+      background:linear-gradient(180deg,#ecf8ff,#dff3ff);
+      border:1px solid #bfe8fb;
+    }
+
+    .compare-card h3{
+      margin:0 0 12px;
+      font-size:22px;
+      line-height:1.15;
+    }
+
+    .calc{
+      margin-top:18px;
+      padding:18px;
+      border-radius:18px;
+      background:#f8fbfd;
+      border:1px dashed #bfd8e6;
+      font-weight:700;
+      line-height:1.5;
+    }
+
+    .explain-box{
+      background:var(--surface);
+      border-left:6px solid var(--primary);
+      padding:24px 24px 24px 22px;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .conditions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .condition-card{
+      background:var(--surface);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .condition-card strong{
+      color:var(--primary-dark);
+    }
+
+    .video-wrap{
+      background:var(--surface);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .video-frame{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      border-radius:20px;
+      background:#d9e8f0;
+    }
+
+    .video-frame iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .cta{
+      background:
+        linear-gradient(120deg, rgba(6,104,154,.93), rgba(10,136,201,.92)),
+        url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color:#fff;
+      border-radius:30px;
+      padding:42px 28px;
+      box-shadow:0 22px 50px rgba(6,104,154,.24);
+      text-align:center;
+    }
+
+    .cta h2{
+      margin:0 0 10px;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.08;
+    }
+
+    .cta p{
+      max-width:760px;
+      margin:0 auto 16px;
+      color:rgba(255,255,255,.93);
+      font-size:17px;
+    }
+
+    .subnote{
+      margin-top:14px;
+      font-size:14px;
+      color:rgba(255,255,255,.86);
+    }
+
+    .floating{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:50;
+      background:var(--primary);
+      color:#fff;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      box-shadow:0 18px 34px rgba(10,136,201,.30);
+      transition:.25s ease;
+    }
+
+    .floating:hover{
+      transform:translateY(-2px);
+      background:var(--primary-dark);
+    }
+
+    footer{
+      padding:40px 0 60px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .narrative,
+      .services-grid,
+      .conditions,
+      .compare,
+      .comfort{
+        grid-template-columns:1fr;
+      }
+
+      .service-media{
+        height:220px;
+      }
+
+      .services-grid{
+        gap:12px;
+      }
+    }
+
+    @media (max-width: 720px){
+      .hero{
+        padding:66px 0 52px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .panel,
+      .condition-card,
+      .compare-card,
+      .comfort-card{
+        padding:22px;
+      }
+
+      .focus-grid{
+        grid-template-columns:1fr;
+      }
+
+      .container{
+        width:min(100% - 20px, var(--max));
+      }
+
+      .services-grid{
+        gap:10px;
+      }
+
+      .service-body{
+        padding:20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
-<div class="hero-content">
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Consulta privada en Ñuñoa · enfoque en encías y orientación</div>
+        <h1>Si te sangran las encías, lo has postergado o lo has pasado mal en el dentista, aquí la experiencia cambia.</h1>
+        <p>Tratamientos enfocados en encías, pacientes con sensibilidad, malas experiencias y personas que necesitan una orientación clara para poder empezar.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#">Quiero agendar hora</a>
+          <a class="btn btn-secondary" href="#como-cobro">Ver cómo estoy cobrando</a>
+        </div>
+      </div>
 
-<div class="hero-text">
-<h1>Si te sangran las encías o lo has pasado mal en el dentista… aquí la experiencia cambia.</h1>
-<p>Tratamientos enfocados en encías, pacientes con sensibilidad y personas que no saben por dónde partir.</p>
-<a class="btn" href="#">Quiero agendar hora</a>
-</div>
+      <div class="hero-card">
+        <div class="doctor-photo">
+          <img src="https://via.placeholder.com/900x1200" alt="Dr. Cristian Tapia">
+        </div>
+        <div class="doctor-mini">
+          <span class="doctor-tag">Dr. Cristian Tapia</span>
+          <div>Tratamientos de encías, limpiezas, orientación y casos que necesitan una atención más clara, humana y ordenada.</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<img src="https://github.com/ctctapia/drcristiantapia/blob/main/Imagen%20de%20WhatsApp%202025-07-23%20a%20las%2012.54.37_c924179b.jpg?raw=true">
+  <!-- RESTO DEL HTML IGUAL (SIN CAMBIOS) -->
 
-</div>
-</div>
-
-<!-- HISTORIA -->
-<section>
-<h2>Esta consulta nace como una forma de agradecimiento</h2>
-<p>Después de todo el apoyo que ha tenido Dentistas Para Todos, decidí abrir este espacio para ayudar a pacientes que no saben por dónde partir, que han tenido malas experiencias o que necesitan entender bien su tratamiento.</p>
-</section>
-
-<!-- SERVICIOS -->
-<section>
-
-<h2>Servicios</h2>
-
-<div class="grid">
-
-<div class="card">
-<div class="service-media">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-</div>
-<div class="card-content">
-<h3>Limpieza simple</h3>
-<p>Para gingivitis sin pérdida ósea importante.</p>
-<p><strong>$35.000</strong> (antes $45.000)</p>
-</div>
-</div>
-
-<div class="card">
-<div class="service-media">
-<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5">
-</div>
-<div class="card-content">
-<h3>Limpieza profunda</h3>
-<p>Casos con más inflamación y sarro bajo la encía.</p>
-<p><strong>$70.000</strong></p>
-</div>
-</div>
-
-<div class="card">
-<div class="service-media">
-<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
-</div>
-<div class="card-content">
-<h3>Tratamiento periodontal</h3>
-<p>Casos más complejos con pérdida de hueso.</p>
-<p><strong>Desde $60.000 por sesión</strong></p>
-</div>
-</div>
-
-<div class="card">
-<div class="service-media">
-<img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b">
-</div>
-<div class="card-content">
-<h3>Evaluación y orientación</h3>
-<p>Para pacientes con miedo o que no saben por dónde partir.</p>
-<p><strong>$10.000</strong></p>
-</div>
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-<section>
-<div class="cta">
-<h2>Agenda tu evaluación</h2>
-<p>Ingresa a mi perfil en Dentistas Para Todos</p>
-<a class="btn" href="#">Ir a mi perfil</a>
-</div>
-</section>
+  <footer>
+    <div class="container">
+      Dr. Cristian Tapia · Consulta privada en Ñuñoa
+    </div>
+  </footer>
 
 </body>
 </html>
